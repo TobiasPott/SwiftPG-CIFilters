@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct FilterView: View {
-    @Binding var filter: Filter;
+    @Binding public var filter: Filter;
     
     public var body: some View {
         HStack {

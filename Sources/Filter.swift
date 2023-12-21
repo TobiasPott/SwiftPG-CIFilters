@@ -10,12 +10,12 @@ public struct Filter: Codable {
         case id, enabled, name, type, args
     }
     
-    let id: UUID = UUID();
-    var enabled: Bool;
-    let name: String;
-    let type: BuiltInFilter;
-    var args: [CGFloat] = [];
-    var action: (CIImage, [CGFloat]) -> CIImage = { (input, args) in return input; }
+    public let id: UUID = UUID();
+    public var enabled: Bool;
+    public let name: String;
+    public let type: BuiltInFilter;
+    public var args: [CGFloat] = [];
+    public var action: (CIImage, [CGFloat]) -> CIImage = { (input, args) in return input; }
     
     public func apply(_ input: CIImage) -> CIImage {
         return action(input, args);
