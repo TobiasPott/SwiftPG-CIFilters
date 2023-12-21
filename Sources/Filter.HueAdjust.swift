@@ -1,7 +1,7 @@
 import SwiftUI
 
-extension Filter {
-    public static func hueAdjust(name: String = "Hue Adjust", inInputAngle: CGFloat = 0.0) -> Filter { 
+public extension Filter {
+    static func hueAdjust(name: String = "Hue Adjust", inInputAngle: CGFloat = 0.0) -> Filter {
         return generic(name, .hueadjust, [inInputAngle], action: { (input, args) in
             let inputAngle = args[0];
             if(inputAngle <= 0) { return input; }
@@ -13,7 +13,7 @@ extension Filter {
         })
     }
 }
-extension FilterView {
+public extension FilterView {
     func getHueAdjustView() -> AnyView {
         AnyView(HStack {
                 Text("Angle \(String(format: "%.2f", filter.args[0]))")

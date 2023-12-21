@@ -1,11 +1,11 @@
 import SwiftUI
 
-enum BuiltInFilter: Codable {
+public enum BuiltInFilter: Codable {
     case posterize, scale, saturation
     case thermal, xray, sepiatone, hueadjust, comiceffect
 }
 
-struct Filter: Codable {
+public struct Filter: Codable {
     private enum CodingKeys: String, CodingKey {
         case id, enabled, name, type, args
     }
@@ -17,7 +17,7 @@ struct Filter: Codable {
     var args: [CGFloat] = [];
     var action: (CIImage, [CGFloat]) -> CIImage = { (input, args) in return input; }
     
-    func apply(_ input: CIImage) -> CIImage {
+    public func apply(_ input: CIImage) -> CIImage {
         return action(input, args);
     }    
     

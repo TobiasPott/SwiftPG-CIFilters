@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct FilterView: View {
+public struct FilterView: View {
     @Binding var filter: Filter;
     
-    var body: some View {
+    public var body: some View {
         HStack {
             HStack {
                 Toggle(isOn: $filter.enabled, label: { Text(filter.enabled ? "on" : "off") }).toggleStyle(.button).tint(filter.enabled ? .green : .red)
@@ -38,22 +38,22 @@ struct FilterView: View {
     }
 }
 
-extension Filter {
-    public static func thermal(name: String = "Thermal") -> Filter {
+public extension Filter {
+    static func thermal(name: String = "Thermal") -> Filter {
         return generic(name, .thermal, [], action: { (input, args) in
             let filter = CIFilter(name: "CIThermal")
             filter?.setValue(input, forKey: "inputImage")
             return filter?.outputImage ?? input
         })
     }
-    public static func xray(name: String = "XRay") -> Filter {
+    static func xray(name: String = "XRay") -> Filter {
         return generic(name, .xray, [], action: { (input, args) in
             let filter = CIFilter(name: "CIXRay")
             filter?.setValue(input, forKey: "inputImage")
             return filter?.outputImage ?? input
         })
     }
-    public static func comicEffect(name: String = "Comic Effect") -> Filter {
+    static func comicEffect(name: String = "Comic Effect") -> Filter {
         return generic(name, .comiceffect, [], action: { (input, args) in
             let filter = CIFilter(name: "CIComicEffect")
             filter?.setValue(input, forKey: "inputImage")
@@ -62,7 +62,7 @@ extension Filter {
     }
 }
 
-extension FilterView {
+public extension FilterView {
     func getThermalView() -> AnyView { FilterView.anySpacer }
     func getXRayView() -> AnyView { FilterView.anySpacer }
     func getComicEffectView() -> AnyView { FilterView.anySpacer }

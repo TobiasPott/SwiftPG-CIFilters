@@ -1,7 +1,7 @@
 import SwiftUI
 
-extension Filter {
-    public static func sepiaTone(name: String = "Sepia Tone", inInputIntensity: CGFloat = 32.0) -> Filter { 
+public extension Filter {
+    static func sepiaTone(name: String = "Sepia Tone", inInputIntensity: CGFloat = 32.0) -> Filter {
         return generic(name, .sepiatone, [inInputIntensity], action: { (input, args) in
             let inputIntensity = args[0];
             
@@ -12,7 +12,7 @@ extension Filter {
         })
     }
 }
-extension FilterView {
+public extension FilterView {
     func getSepiaToneView() -> AnyView {
         AnyView(HStack {
             Text("Intensity \(String(format: "%.2f", filter.args[0]))")

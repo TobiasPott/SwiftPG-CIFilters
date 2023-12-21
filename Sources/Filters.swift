@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Filters : Codable {
+public struct Filters : Codable {
     
     private enum CodingKeys: String, CodingKey {
         case items
@@ -18,23 +18,23 @@ struct Filters : Codable {
         items.append(contentsOf: initItems);
     }
     
-    subscript (index: Int) -> Filter {
+    public subscript (index: Int) -> Filter {
         get { return items[index] }
         set(value) { items[index] = value }
     }
-    mutating func append(_ newElement: Filter) {
+    public mutating func append(_ newElement: Filter) {
         self.items.append(newElement)
     }
-    mutating func append(other: Filters) {
+    public mutating func append(other: Filters) {
         self.items.append(contentsOf: other.items)
     }
-    mutating func remove(at: Int) {
+    public mutating func remove(at: Int) {
         self.items.remove(at: at)
     }
-    mutating func remove(atOffsets: IndexSet) {
+    public mutating func remove(atOffsets: IndexSet) {
         self.items.remove(atOffsets: atOffsets)
     }
-    mutating func reset() {
+    public mutating func reset() {
         items = []
     }
     

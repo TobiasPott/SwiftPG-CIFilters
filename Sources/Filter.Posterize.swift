@@ -1,7 +1,7 @@
 import SwiftUI
 
-extension Filter {
-    public static func posterize(name: String = "Posterize", inInputLevels: CGFloat = 32.0) -> Filter { 
+public extension Filter {
+    static func posterize(name: String = "Posterize", inInputLevels: CGFloat = 32.0) -> Filter {
         return generic(name, .posterize, [inInputLevels], action: { (input, args) in
             let inputLevels = args[0];
             if(inputLevels <= 0) { return input; }
@@ -13,7 +13,7 @@ extension Filter {
         })
     }
 }
-extension FilterView {
+public extension FilterView {
     func getPosterizeView() -> AnyView {
         AnyView(HStack {
             Text("Levels \(Int(filter.args[0]))")

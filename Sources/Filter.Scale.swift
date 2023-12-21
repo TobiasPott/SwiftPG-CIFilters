@@ -1,7 +1,7 @@
 import SwiftUI
 
-extension Filter {
-    public static func scale(name: String = "Scale", inScale: CGFloat = 1.0) -> Filter { 
+public extension Filter {
+    static func scale(name: String = "Scale", inScale: CGFloat = 1.0) -> Filter {
         return generic(name, .scale, [inScale], action: { (input, args) in
             let scale = args[0];
             if(scale <= 0) { return input; }
@@ -11,7 +11,7 @@ extension Filter {
         })
     }
 }
-extension FilterView {
+public extension FilterView {
     func getScaleView() -> AnyView {
         AnyView(HStack {
             Text("Scale \(String(format: "%.2f", filter.args[0]))")
