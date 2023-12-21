@@ -10,10 +10,10 @@ public struct Filters : Codable {
     
     public var count: Int { items.count }
     
-    init() {
+    public init() {
         items = []
     }
-    init(_ initItems: [Filter]) {
+    public init(_ initItems: [Filter]) {
         items = []
         items.append(contentsOf: initItems);
     }
